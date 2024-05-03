@@ -6,7 +6,7 @@ public class Main {
 	public static void main(String[] args) {
 		List<Article> articles = new ArrayList<>();
 		Scanner sc = new Scanner(System.in);
-		int indexNumber = 0;
+		int indexNumber = 1;
 		System.out.println("== 프로그램 시작 ==");
 
 		while (true) {
@@ -20,7 +20,17 @@ public class Main {
 				break;
 			} else if (cmd.equals("article list")) {
 
-				System.out.println("게시물이 없습니다.");
+					if (articles.size() == 0) {
+						System.out.println("존재한는 게시글이 없습니다.");
+				
+				}
+						System.out.println("번호 | 제목 | 내용");
+						for (int i = articles.size() - 1; i >= 0; i--) {
+							Article article = articles.get(i);
+							System.out.printf("%d    | %s    | %s\n", article.indexNumber, article.title, article.contents);
+					}
+					
+					
 			} else if (cmd.equals("article write")) {
 
 				System.out.printf("제목 : ");
@@ -33,8 +43,8 @@ public class Main {
 				Article article = new Article(title, contents, indexNumber);
 				articles.add(article);
 				
-				indexNumber++;
 				System.out.printf("%d번 글이 생성 되었습니다.", indexNumber);
+				indexNumber++;
 
 			} else if (cmd.length() == 0) {
 				System.out.println("알맞는 명령어를 적어주세요");
