@@ -17,7 +17,13 @@ public class Main {
 			String cmd = sc.nextLine().trim();
 
 			if (cmd.equals("종료")) {
+				
 				break;
+				
+			} else if (cmd.length() == 0) {
+				
+				System.out.println("알맞는 명령어를 적어주세요");
+			
 			} else if (cmd.equals("article write")) {
 
 				System.out.printf("제목 : ");
@@ -46,7 +52,14 @@ public class Main {
 			} else if (cmd.startsWith("article detail ")) {
 				String[] cmdBits = cmd.split(" ");
 
-				int id = Integer.parseInt(cmdBits[2]);
+				int id = 0;
+
+				try {
+					id = Integer.parseInt(cmdBits[2]);
+				} catch (NumberFormatException e) {
+					System.out.println("명령어가 올바르지 않습니다");
+					continue;
+				}
 
 				Article foundArticle = null;
 
@@ -56,7 +69,6 @@ public class Main {
 						break;
 					}
 				}
-
 				if (foundArticle == null) {
 					System.out.println(id + "번 게시물이 존재하지 않습니다");
 					continue;
@@ -67,10 +79,6 @@ public class Main {
 				System.out.println("제목 : " + foundArticle.title);
 				System.out.println("내용 : " + foundArticle.contents);
 
-			}
-
-			else if (cmd.length() == 0) {
-				System.out.println("알맞는 명령어를 적어주세요");
 			} else {
 				System.out.println("존재하지 않는 명령어 입니다.");
 
