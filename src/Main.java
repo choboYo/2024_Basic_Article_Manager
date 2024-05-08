@@ -7,15 +7,21 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-
 public class Main {
 
+	static List<Article> articles = new ArrayList<>();
+
+	static int indexNumber = 1;
+
 	public static void main(String[] args) {
-		List<Article> articles = new ArrayList<>();
+		
 		Scanner sc = new Scanner(System.in);
+		
 		int indexNumber = 1;
-		int views = 0;
+		
 		System.out.println("== 프로그램 시작 ==");
+
+		makeTestData();
 
 		while (true) {
 			// System = 클래스 , in static 변수
@@ -39,7 +45,7 @@ public class Main {
 				System.out.printf("내용 : ");
 				String contents = sc.nextLine().trim();
 
-				Article article = new Article(title, contents, indexNumber, util.getDateStr(), views);
+				Article article = new Article(title, contents, indexNumber, Util.getDateStr(), 0);
 				articles.add(article);
 
 				System.out.printf("%d번 글이 생성 되었습니다.\n", indexNumber);
@@ -54,7 +60,8 @@ public class Main {
 				System.out.println("번호 | 제목  |   날짜           |조회수");
 				for (int i = articles.size() - 1; i >= 0; i--) {
 					Article article = articles.get(i);
-					System.out.printf("%d    | %s   |%s |%d\n", article.indexNumber, article.title, article.regDate, article.views);
+					System.out.printf("%d    | %s   |%s |%d\n", article.indexNumber, article.title, article.regDate,
+							article.views);
 				}
 			} else if (cmd.startsWith("article detail ")) {
 				String[] cmdBits = cmd.split(" ");
@@ -80,7 +87,7 @@ public class Main {
 					System.out.println(id + "번 게시물이 존재하지 않습니다");
 					continue;
 				}
-				++foundArticle.views;
+				foundArticle.increaseViewCnt();
 				System.out.println("번호 : " + foundArticle.indexNumber);
 				System.out.println("날짜 : " + foundArticle.regDate);
 				System.out.println("제목 : " + foundArticle.title);
@@ -165,6 +172,15 @@ public class Main {
 
 		System.out.println("== 프로그램 종료==");
 	}
+
+	private static void makeTestData() {
+		System.out.println("테스트용 게시글 데이터를 5개 생성했습니다");
+
+		for (int i = 1; i <= 5; i++) {
+			articles.add(new Article("제목" + i, "내용" + i, indexNumber++, Util.getDateStr(), i * 10));
+		}
+	}
+
 }
 
 class Article {
@@ -182,6 +198,10 @@ class Article {
 		this.indexNumber = indexNumber;
 		this.regDate = regDate;
 		this.views = views;
+	}
+
+	void increaseViewCnt() {
+		this.views++;
 	}
 
 }
