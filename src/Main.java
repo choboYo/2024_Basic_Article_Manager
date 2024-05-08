@@ -14,6 +14,7 @@ public class Main {
 		List<Article> articles = new ArrayList<>();
 		Scanner sc = new Scanner(System.in);
 		int indexNumber = 1;
+		int views = 0;
 		System.out.println("== 프로그램 시작 ==");
 
 		while (true) {
@@ -38,7 +39,7 @@ public class Main {
 				System.out.printf("내용 : ");
 				String contents = sc.nextLine().trim();
 
-				Article article = new Article(title, contents, indexNumber, util.getDateStr());
+				Article article = new Article(title, contents, indexNumber, util.getDateStr(), views);
 				articles.add(article);
 
 				System.out.printf("%d번 글이 생성 되었습니다.\n", indexNumber);
@@ -50,10 +51,10 @@ public class Main {
 					System.out.println("존재한는 게시글이 없습니다.");
 
 				}
-				System.out.println("번호 | 제목  |   날짜           	|");
+				System.out.println("번호 | 제목  |   날짜           |조회수");
 				for (int i = articles.size() - 1; i >= 0; i--) {
 					Article article = articles.get(i);
-					System.out.printf("%d    | %s   |%s\n", article.indexNumber, article.title, article.regDate);
+					System.out.printf("%d    | %s   |%s |%d\n", article.indexNumber, article.title, article.regDate, article.views);
 				}
 			} else if (cmd.startsWith("article detail ")) {
 				String[] cmdBits = cmd.split(" ");
@@ -79,11 +80,12 @@ public class Main {
 					System.out.println(id + "번 게시물이 존재하지 않습니다");
 					continue;
 				}
-				
+				++foundArticle.views;
 				System.out.println("번호 : " + foundArticle.indexNumber);
 				System.out.println("날짜 : " + foundArticle.regDate);
 				System.out.println("제목 : " + foundArticle.title);
 				System.out.println("내용 : " + foundArticle.contents);
+				System.out.println("조회수 : " + foundArticle.views);
 
 			} else if (cmd.startsWith("article modify ")) {
 				String[] cmdBits = cmd.split(" ");
@@ -171,15 +173,15 @@ class Article {
 	String contents;
 	String regDate;
 	int indexNumber;
-	
+	int views;
 
-	Article(String title, String contents, int indexNumber, String regDate) {
+	Article(String title, String contents, int indexNumber, String regDate, int views) {
 
 		this.title = title;
 		this.contents = contents;
 		this.indexNumber = indexNumber;
 		this.regDate = regDate;
-		
+		this.views = views;
 	}
 
 }
