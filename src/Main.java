@@ -9,16 +9,18 @@ import java.util.Scanner;
 
 public class Main {
 
-	static List<Article> articles = new ArrayList<>();
+	static List<Article> articles;
+	static int indexNumber;
 
-	static int indexNumber = 1;
+	static {
+		articles = new ArrayList<>();
+		indexNumber = 1;
+	}
 
 	public static void main(String[] args) {
-		
+
 		Scanner sc = new Scanner(System.in);
-		
-		int indexNumber = 1;
-		
+
 		System.out.println("== 프로그램 시작 ==");
 
 		makeTestData();
