@@ -6,6 +6,8 @@ public class Member {
 	private String loginId;
 	private String loginPw;
 	private String name;
+	private String loginedId;
+	private String loginedPw;
 	
 	public int getId() {
 		return id;
@@ -27,10 +29,18 @@ public class Member {
 		return loginId;
 	}
 
+	public String getLoginedId() {
+		return loginedId;
+	}
+	
 	public void setLoginId(String loginId) {
 		this.loginId = loginId;
 	}
 
+	public void setLoginedId(String loginedId) {
+		this.loginedId = loginedId;
+	}
+	
 	public String getLoginPw() {
 		return loginPw;
 	}
@@ -39,6 +49,14 @@ public class Member {
 		this.loginPw = loginPw;
 	}
 
+	public String getLoginedPw() {
+		return loginedPw;
+	}
+	
+	public void setLoginedPw(String loginedPw) {
+		this.loginedPw = loginedPw;
+	}
+	
 	public String getName() {
 		return name;
 	}
