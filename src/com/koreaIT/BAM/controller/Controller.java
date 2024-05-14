@@ -9,8 +9,12 @@ public abstract class Controller {
 	public Scanner sc;
 	public int lastId;
 	public String cmd;
-	public Member loginedMember;
+	public static Member loginedMember;
 	
 	public abstract void doAction(String cmd, String methodName);
 	public abstract void makeTestData();
+	
+	public boolean isLogined() {
+		return loginedMember != null;
+	}
 }
