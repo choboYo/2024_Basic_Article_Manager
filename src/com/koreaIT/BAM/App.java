@@ -41,8 +41,14 @@ public class App {
 			String controllerName = cmdBits[0];
 			String methodName = cmdBits[1];
 			
-			
+			// /로 나누어서 사용하게 될시 어떻게 사용할수 있을까?
+			//  앞과 뒤를 붙임으로써 뒤의 methodName만의 겹침이 있어도 완전히 겹치지 않게 
 			switch (controllerName + "/" + methodName) {
+//			case "member/auth":
+//				if() {
+//					
+//				}
+			
 			case "article/write":
 			case "article/modify":
 			case "article/delete":
