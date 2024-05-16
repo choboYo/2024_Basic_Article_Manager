@@ -6,7 +6,6 @@ public class Member {
 	private String loginId;
 	private String loginPw;
 	private String name;
-	private int authorityKey;
 	
 	public int getId() {
 		return id;
@@ -55,28 +54,4 @@ public class Member {
 		this.loginPw = loginPw;
 		this.name = name;
 	}
-	
-	public Member(int id, String regDate, String loginId, String loginPw, String name, int authorityKey) {
-		this.id = id;
-		this.regDate = regDate;
-		this.loginId = loginId;
-		this.loginPw = loginPw;
-		this.name = name;
-		this.authorityKey = authorityKey;
-	}
-	
-	
-	
-	
-	public void Manager(int id, String regDate, String loginId, String loginPw, String name, int authorityKey) {
-		this.id = id;
-		this.regDate = regDate;
-		this.loginId = loginId;
-		this.loginPw = loginPw;
-		this.name = name;
-		this.authorityKey = authorityKey;
-	} 
-
 }
-
-	
