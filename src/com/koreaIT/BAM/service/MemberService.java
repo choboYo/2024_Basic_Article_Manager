@@ -9,17 +9,21 @@ public class MemberService {
 	public MemberService() {
 		this.memberDao = new MemberDao();
 	}
-
+	
+	public void joinMember(String loginId, String loginPw, String name) {
+		memberDao.joinMember(loginId, loginPw, name);
+	}
+	
 	public boolean loginIdDupChk(String loginId) {
 		return memberDao.loginIdDupChk(loginId);
 	}
 
-	public void joinMember(String loginId, String loginPw, String name) {
-		memberDao.joinMember(loginId, loginPw, name);
+	public Member getMemberByLoginId(String loginId) {
+		return memberDao.getMemberByLoginId(loginId);
 	}
 
-	public Member getMemberLoginId(String loginId) {
-		return memberDao.getMemberByLoginId(loginId);
+	public String getLoginIdByMemberId(int memberId) {
+		return memberDao.getLoginIdByMemberId(memberId);
 	}
 	
 	

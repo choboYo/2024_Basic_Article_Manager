@@ -16,9 +16,24 @@ public class ArticleService {
 	public int writeArticle(int memberId, String title, String body, int viewCnt) {
 		return articleDao.writeArticle(memberId, title, body, viewCnt);
 	}
-
-	public List<Article> articleList(String searchKeyword, List<Article> printArticles) {
-		return articleDao.articleList(searchKeyword, printArticles);
+	
+	public List<Article> getPrintArticles(String searchKeyword) {
+		return articleDao.getPrintArticles(searchKeyword);
 	}
 
+	public Article getArticleById(int id) {
+		return articleDao.getArticleById(id);
+	}
+
+	public void increaseViewCnt(Article foundArticle) {
+		articleDao.increaseViewCnt(foundArticle);
+	}
+	
+	public void modifyArticle(Article foundArticle, String title, String body) {
+		articleDao.modifyArticle(foundArticle, title, body);
+	}
+
+	public void deleteArticle(Article foundArticle) {
+		articleDao.deleteArticle(foundArticle);
+	}
 }

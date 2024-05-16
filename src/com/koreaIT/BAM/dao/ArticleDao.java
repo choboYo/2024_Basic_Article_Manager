@@ -21,17 +21,42 @@ public class ArticleDao {
 		articles.add(new Article(lastId, Util.getDateStr(), memberId, title, body, viewCnt));
 		return lastId++;
 	}
-
-	public List<Article> articleList(String searchKeyword, List<Article> printArticles) {
-		
+	
+	public List<Article> getPrintArticles(String searchKeyword) {
+		if (searchKeyword.length() > 0) {
+			System.out.println("검색어 : " + searchKeyword);
+			
+			List<Article> printArticles = new ArrayList<>();
+			
+			for (Article article : articles) {
+				if (article.getTitle().contains(searchKeyword)) {
+					printArticles.add(article);
+				}
+			}
+			return printArticles;
+		}
+		return articles;
+	}
+	
+	public Article getArticleById(int id) {
 		for (Article article : articles) {
-			if (article.getTitle().contains(searchKeyword)) {
-				printArticles.add(article);
-				return printArticles;
+			if (article.getId() == id) {
+				return article;
 			}
 		}
-		
 		return null;
 	}
+	
+	public void increaseViewCnt(Article foundArticle) {
+		foundArticle.increaseViewCnt();
+	}
 
+	public void modifyArticle(Article foundArticle, String title, String body) {
+		foundArticle.setTitle(title);
+		foundArticle.setBody(body);
+	}
+
+	public void deleteArticle(Article foundArticle) {
+		articles.remove(foundArticle);
+	}
 }
