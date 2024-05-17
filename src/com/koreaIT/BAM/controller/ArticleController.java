@@ -104,6 +104,24 @@ public class ArticleController extends Controller {
 		System.out.println("제목 : " + foundArticle.getTitle());
 		System.out.println("내용 : " + foundArticle.getBody());
 		System.out.println("조회수 : " + foundArticle.getViewCnt());
+		
+		System.out.println("==============================");
+		
+		for(int i = 1; i < 4; i++) {
+			int randomint = (int) (Math.random() * 3) + 1;
+			System.out.println(memberService.getLoginIdByMemberId(i));
+			System.out.println();
+			if( randomint == 1) {
+				System.out.println("안녕하세요");
+			} else if (randomint == 2)  {
+				System.out.println("재밌네요");
+			} else {
+				System.out.println("나는 별로");
+			}
+			System.out.println();
+			System.out.println("------------------------------");
+		}
+		
 	}
 	
 	public void doModify() {

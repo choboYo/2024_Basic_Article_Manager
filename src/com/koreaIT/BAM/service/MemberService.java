@@ -26,6 +26,6 @@ public class MemberService {
 	public String getLoginIdByMemberId(int memberId) {
 		return memberDao.getLoginIdByMemberId(memberId);
 	}
-	
+
 	
 }

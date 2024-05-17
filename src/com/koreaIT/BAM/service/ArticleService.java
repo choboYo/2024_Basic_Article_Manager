@@ -41,4 +41,5 @@ public class ArticleService {
 	public void deleteArticle(Article foundArticle) {
 		articleDao.deleteArticle(foundArticle);
 	}
+
 }
