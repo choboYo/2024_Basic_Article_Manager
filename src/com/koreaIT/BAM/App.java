@@ -49,6 +49,7 @@ public class App {
 			case "article/modify":
 			case "article/delete":
 			case "member/logout":
+			case "reply/delete":	
 				if (Controller.isLogined() == false) {
 					System.out.println("로그인부터 하고 와");
 					continue;
@@ -65,7 +66,7 @@ public class App {
 			
 			Controller controller = null;
 			
-			if (controllerName.equals("article")) {
+			if (controllerName.equals("article") || controllerName.equals("reply")) {
 				controller = articleController;
 			} else if (controllerName.equals("member")) {
 				controller = memberController;
@@ -74,7 +75,7 @@ public class App {
 				continue;
 			}
 			
-			controller.doAction(cmd, methodName);
+			controller.doAction(cmd, methodName, controllerName);
 		}
 
 		sc.close();

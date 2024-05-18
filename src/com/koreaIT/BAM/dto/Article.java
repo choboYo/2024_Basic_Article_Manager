@@ -7,6 +7,8 @@ public class Article {
 	private String title;
 	private String body;
 	private int viewCnt;
+	private String text;
+	private String replyUser;
 	
 	public int getId() {
 		return id;
@@ -28,6 +30,14 @@ public class Article {
 		return memberId;
 	}
 
+	public String getReplyUser() {
+		return replyUser;
+	}
+	
+	public void setReplyUser(String replyUser) {
+		this.replyUser = replyUser;
+	}
+	
 	public void setMemberId(int memberId) {
 		this.memberId = memberId;
 	}
@@ -44,10 +54,18 @@ public class Article {
 		return body;
 	}
 
+	public String getText() {
+		return text;
+	}
+	
 	public void setBody(String body) {
 		this.body = body;
 	}
 
+	public void setText(String text) {
+		this.text = text;
+	}
+	
 	public int getViewCnt() {
 		return viewCnt;
 	}

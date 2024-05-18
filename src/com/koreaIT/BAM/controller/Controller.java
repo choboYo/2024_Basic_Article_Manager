@@ -10,7 +10,7 @@ public abstract class Controller {
 	public String cmd;
 	public static Member loginedMember;
 	
-	public abstract void doAction(String cmd, String methodName);
+	public abstract void doAction(String cmd, String methodName, String controllerName);
 	public abstract void makeTestData();
 	
 	public static boolean isLogined() {

@@ -62,4 +62,13 @@ public class ArticleDao {
 	public void deleteArticle(Article foundArticle) {
 		articles.remove(foundArticle);
 	}
+
+	public void setreply(Article foundReply, String text, String replyUser) {
+		foundReply.setText(text);
+		foundReply.setReplyUser(replyUser);
+	}
+
+	public void deleteReplyArticle(Article foundReply) {
+		articles.remove(foundReply);
+	}
 }

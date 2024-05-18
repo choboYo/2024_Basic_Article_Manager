@@ -42,4 +42,12 @@ public class ArticleService {
 		articleDao.deleteArticle(foundArticle);
 	}
 
+	public void setreply(Article foundReply, String text, String replyUser) {
+		articleDao.setreply(foundReply, text, replyUser);
+	}
+
+	public void deleteReplyArticle(Article foundReply) {
+		articleDao.deleteReplyArticle(foundReply);
+	}
+
 }
