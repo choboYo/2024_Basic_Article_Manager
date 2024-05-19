@@ -129,8 +129,8 @@ public class ArticleController extends Controller {
 				text = sc.nextLine();
 			}
 			System.out.println();
-			articleService.setreply(foundReply, text, replyUser);
 			System.out.println("------------------------------");
+			articleService.setreply(foundReply, text, replyUser);
 		}
 		
 	}
@@ -173,19 +173,19 @@ public class ArticleController extends Controller {
 			return;
 		}
 
-		Article foundReply = articleService.getArticleById(id);
+		Article foundArticle = articleService.getArticleById(id);
 
-		if (foundReply == null) {
+		if (foundArticle == null) {
 			System.out.println(id + "번 게시물이 존재하지 않습니다");
 			return;
 		}
 
-		if (foundReply.getMemberId() != loginedMember.getId()) {
+		if (foundArticle.getMemberId() != loginedMember.getId()) {
 			System.out.println("해당 게시물에 대한 권한이 없습니다");
 			return;
 		}
 
-		articleService.deleteArticle(foundReply);
+		articleService.deleteArticle(foundArticle);
 
 		System.out.println(id + "번 게시물이 삭제되었습니다");
 	}
@@ -198,19 +198,19 @@ public class ArticleController extends Controller {
 			return;
 		}
 
-		Article foundArticle = articleService.getArticleById(id);
+		Article foundReply = articleService.getArticleById(id);
 
-		if (foundArticle == null) {
+		if (foundReply == null) {
 			System.out.println(id + "번 게시물이 존재하지 않습니다");
 			return;
 		}
 
-		if (foundArticle.getMemberId() != loginedMember.getId()) {
+		if (foundReply.getReplyUser() != loginedMember.getLoginId()) {
 			System.out.println("해당 게시물에 대한 권한이 없습니다");
 			return;
 		}
 		
-		articleService.deleteReplyArticle(foundArticle);
+		articleService.deleteReplyArticle(foundReply);
 		
 	}
 

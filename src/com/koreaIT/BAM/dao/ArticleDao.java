@@ -69,6 +69,11 @@ public class ArticleDao {
 	}
 
 	public void deleteReplyArticle(Article foundReply) {
-		articles.remove(foundReply);
+		foundReply.setReplyUser(null);
+		foundReply.setText(null);
+	}
+
+	public String getreplyUser(Article foundReply) {
+		return foundReply.getReplyUser();
 	}
 }
