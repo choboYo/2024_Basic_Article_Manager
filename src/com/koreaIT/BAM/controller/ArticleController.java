@@ -36,18 +36,17 @@ public class ArticleController extends Controller {
 		case "article/modify":
 			doModify();
 			break;
-			case "article/delete":
-				doDelete();
-				break;
-			case "reply/delete":
-				doReDelete();
-				break;
+		case "article/delete":
+			doDelete();
+			break;
+		case "reply/delete":
+			doReDelete();
+			break;
 		default:
 			System.out.println("존재하지 않는 명령어 입니다");
 		}
 	}
 
-	
 	private void doWrite() {
 		System.out.printf("제목 : ");
 		String title = sc.nextLine().trim();
@@ -110,14 +109,14 @@ public class ArticleController extends Controller {
 		System.out.println("조회수 : " + foundArticle.getViewCnt());
 		
 		System.out.println("==============================");
+
 		
-		for(int i = 1; i < 4; i++) {
+			for(int i = 1; i < 4; i++) {
 			int randomint = (int) (Math.random() * 3) + 1;
 			Article foundReply = articleService.getArticleById(i);
 			String replyUser = memberService.getLoginIdByMemberId(i);
 			String text;
-			System.out.println(replyUser);
-			System.out.println();
+		
 		    if( randomint == 1) {
 				System.out.println("안녕하세요");
 				text = sc.nextLine();
@@ -128,11 +127,14 @@ public class ArticleController extends Controller {
 				System.out.println("나는 별로");
 				text = sc.nextLine();
 			}
+		    
+		    System.out.println(replyUser);
+		    articleService.setreply(foundReply, text, replyUser);
 			System.out.println();
 			System.out.println("------------------------------");
-			articleService.setreply(foundReply, text, replyUser);
 		}
 		
+			
 	}
 
 	public void doModify() {
@@ -209,9 +211,9 @@ public class ArticleController extends Controller {
 			System.out.println("해당 게시물에 대한 권한이 없습니다");
 			return;
 		}
-		
+
 		articleService.deleteReplyArticle(foundReply);
-		
+
 	}
 
 	private int getCmdNum(String cmd) {

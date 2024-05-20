@@ -50,6 +50,7 @@ public class ArticleDao {
 		return null;
 	}
 	
+	
 	public void increaseViewCnt(Article foundArticle) {
 		foundArticle.increaseViewCnt();
 	}
@@ -76,4 +77,5 @@ public class ArticleDao {
 	public String getreplyUser(Article foundReply) {
 		return foundReply.getReplyUser();
 	}
+
 }

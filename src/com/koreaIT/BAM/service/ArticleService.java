@@ -50,4 +50,8 @@ public class ArticleService {
 		articleDao.deleteReplyArticle(foundReply);
 	}
 
+	public String getreplyUser(Article foundReply) {
+		return articleDao.getreplyUser(foundReply);
+	}
+
 }
